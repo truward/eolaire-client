@@ -1,0 +1,39 @@
+package truward.orion.user;
+
+option java_package = "com.truward.orion.eolaire.model";
+option java_outer_classname = "EolaireModel";
+
+message ItemType {
+  optional int64 id = 1;
+  required string name = 2;
+}
+
+message Item {
+  optional int64 id = 1;
+  required string name = 2;
+  required int64 itemTypeId = 3;
+}
+
+//
+// Service Messages
+//
+
+// Get Items
+
+message GetItemsRequest {
+  repeated int64 itemId = 1;
+}
+
+message GetItemsResponse {
+  repeated Item items = 2;
+}
+
+// Get Item Types
+
+message GetItemTypesRequest {
+  repeated int64 ids = 1;
+}
+
+message GetItemTypesResponse {
+  repeated ItemType itemTypes = 2;
+}
