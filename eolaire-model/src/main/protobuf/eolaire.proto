@@ -141,7 +141,7 @@ message GetItemByRelationRequest {
   required int32 size = 2;
 
   required int64 itemId = 3; // e.g. 'science_fiction'
-  optional int32 relationTypeId = 4; // e.g. 'genre'
+  optional int64 relationTypeId = 4; // e.g. 'genre'
   optional int64 relatedItemTypeId = 5; // e.g. 'book' or just everything if omitted
 }
 
