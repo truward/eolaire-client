@@ -25,7 +25,7 @@ message ItemRelation {
 
 message ItemGraph {
   required Item item = 1;
-  repeated ItemRelation relation = 2;
+  repeated ItemRelation relations = 2;
 }
 
 enum VariantType {
@@ -64,7 +64,7 @@ message MetadataEntry {
 }
 
 message Metadata {
-  repeated MetadataEntry entry = 1;
+  repeated MetadataEntry entries = 1;
 }
 
 /**
@@ -86,11 +86,11 @@ message ItemProfile {
 // Get Items
 
 message GetItemsRequest {
-  repeated int64 itemId = 1;
+  repeated int64 itemIds = 1;
 }
 
 message GetItemsResponse {
-  repeated Item item = 2;
+  repeated Item items = 2;
 }
 
 // Get Item Profile
@@ -109,20 +109,20 @@ message GetEntityTypeResponse {
 
 message GetAllEntityTypesRequest {
   optional string offsetToken = 1;
-  required int32 size = 2;
+  required int32 limit = 2;
 }
 
 message GetAllEntityTypesResponse {
   optional string offsetToken = 1;
 
-  repeated EntityType type = 2;
+  repeated EntityType types = 2;
 }
 
 // Query items by their types, e.g. get all 'books' or get all 'genres'
 
 message GetItemByTypeRequest {
   optional string offsetToken = 1;
-  required int32 size = 2;
+  required int32 limit = 2;
 
   required int64 itemTypeId = 3;
 }
@@ -130,7 +130,7 @@ message GetItemByTypeRequest {
 message GetItemByTypeResponse {
   optional string offsetToken = 1;
 
-  repeated int64 itemId = 2;
+  repeated int64 itemIds = 2;
 }
 
 // Query items by their relations to the other items,
@@ -138,7 +138,7 @@ message GetItemByTypeResponse {
 
 message GetItemByRelationRequest {
   optional string offsetToken = 1;
-  required int32 size = 2;
+  required int32 limit = 2;
 
   required int64 itemId = 3; // e.g. 'science_fiction'
   optional int64 relationTypeId = 4; // e.g. 'genre'
@@ -148,5 +148,5 @@ message GetItemByRelationRequest {
 message GetItemByRelationResponse {
   optional string offsetToken = 1;
 
-  repeated int64 itemId = 2;
+  repeated int64 itemIds = 2;
 }
