@@ -4,7 +4,7 @@
   <parent>
     <artifactId>eolaire-client</artifactId>
     <groupId>com.truward.orion</groupId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
   </parent>
 
   <artifactId>eolaire-model</artifactId>
