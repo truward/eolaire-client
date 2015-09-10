@@ -21,6 +21,7 @@ message Item {
 message ItemRelation {
   required int64 targetItemId = 1;
   required int64 relationTypeId = 2;
+  optional Metadata metadata = 3;
 }
 
 message ItemGraph {
@@ -76,7 +77,7 @@ message ItemProfile {
   required int64 created = 3;
   required int64 updated = 4;
   required int64 flags = 5;
-  required Metadata metadata = 6;
+  optional Metadata metadata = 6;
 }
 
 //
