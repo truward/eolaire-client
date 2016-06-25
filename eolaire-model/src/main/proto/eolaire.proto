@@ -1,3 +1,5 @@
+syntax = "proto3";
+
 package truward.orion.user;
 
 option java_package = "com.truward.orion.eolaire.model";
@@ -8,25 +10,25 @@ option java_outer_classname = "EolaireModel";
 //
 
 message EntityType {
-  optional int64 id = 1;
-  required string name = 2;
+  int64 id = 1;
+  string name = 2;
 }
 
 message Item {
-  optional int64 id = 1;
-  required string name = 2;
-  required int64 itemTypeId = 3;
+  int64 id = 1;
+  string name = 2;
+  int64 itemTypeId = 3;
 }
 
 message ItemRelation {
-  required int64 targetItemId = 1;
-  required int64 relationTypeId = 2;
-  optional Metadata metadata = 3;
+  int64 targetItemId = 1;
+  int64 relationTypeId = 2;
+  Metadata metadata = 3;
 }
 
 message ItemGraph {
-  required Item item = 1;
-  repeated ItemRelation relations = 2;
+  Item item = 1;
+  ItemRelation relations = 2;
 }
 
 enum VariantType {
@@ -50,34 +52,34 @@ enum VariantType {
 }
 
 message VariantValue {
-  optional int32 intValue = 1;
-  optional int64 longValue = 2;
-  optional float floatValue = 3;
-  optional double doubleValue = 4;
-  optional string strValue = 5;
-  optional bytes bytesValue = 7;
+  int32 intValue = 1;
+  int64 longValue = 2;
+  float floatValue = 3;
+  double doubleValue = 4;
+  string strValue = 5;
+  bytes bytesValue = 7;
 }
 
 message MetadataEntry {
-  required string key = 1;
-  required VariantType type = 2;
-  optional VariantValue value = 3;
+  string key = 1;
+  VariantType type = 2;
+  VariantValue value = 3;
 }
 
 message Metadata {
-  repeated MetadataEntry entries = 1;
+  MetadataEntry entries = 1;
 }
 
 /**
  * Optional profile
  */
 message ItemProfile {
-  optional int64 itemId = 1;
-  optional string description = 2;
-  required int64 created = 3;
-  required int64 updated = 4;
-  required int64 flags = 5;
-  optional Metadata metadata = 6;
+  int64 itemId = 1;
+  string description = 2;
+  int64 created = 3;
+  int64 updated = 4;
+  int64 flags = 5;
+  Metadata metadata = 6;
 }
 
 //
@@ -97,24 +99,24 @@ message GetItemsResponse {
 // Get Item Profile
 
 message GetItemProfileResponse {
-  optional ItemProfile profile = 1;
+  ItemProfile profile = 1;
 }
 
 // Get particular entity type by name
 
 message GetEntityTypeResponse {
-  optional EntityType type = 2;
+  EntityType type = 2;
 }
 
 // Get all entity types
 
 message GetAllEntityTypesRequest {
-  optional string offsetToken = 1;
-  required int32 limit = 2;
+  string offsetToken = 1;
+  int32 limit = 2;
 }
 
 message GetAllEntityTypesResponse {
-  optional string offsetToken = 1;
+  string offsetToken = 1;
 
   repeated EntityType types = 2;
 }
@@ -122,14 +124,14 @@ message GetAllEntityTypesResponse {
 // Query items by their types, e.g. get all 'books' or get all 'genres'
 
 message GetItemByTypeRequest {
-  optional string offsetToken = 1;
-  required int32 limit = 2;
+  string offsetToken = 1;
+  int32 limit = 2;
 
-  required int64 itemTypeId = 3;
+  int64 itemTypeId = 3;
 }
 
 message GetItemByTypeResponse {
-  optional string offsetToken = 1;
+  string offsetToken = 1;
 
   repeated int64 itemIds = 2;
 }
@@ -138,16 +140,16 @@ message GetItemByTypeResponse {
 // e.g. get 'books' in 'genre': 'science_fiction'
 
 message GetItemByRelationRequest {
-  optional string offsetToken = 1;
-  required int32 limit = 2;
+  string offsetToken = 1;
+  int32 limit = 2;
 
-  required int64 itemId = 3; // e.g. 'science_fiction'
-  optional int64 relationTypeId = 4; // e.g. 'genre'
-  optional int64 relatedItemTypeId = 5; // e.g. 'book' or just everything if omitted
+  int64 itemId = 3; // e.g. 'science_fiction'
+  int64 relationTypeId = 4; // e.g. 'genre'
+  int64 relatedItemTypeId = 5; // e.g. 'book' or just everything if omitted
 }
 
 message GetItemByRelationResponse {
-  optional string offsetToken = 1;
+  string offsetToken = 1;
 
   repeated int64 itemIds = 2;
 }
